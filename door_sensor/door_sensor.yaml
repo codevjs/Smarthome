@@ -1,0 +1,38 @@
+esphome:
+  name: door_sensor
+  platform: ESP32
+  board: esp32doit-devkit-v1
+
+deep_sleep:
+  run_duration: 10s
+  sleep_duration: 120min
+  wakeup_pin: 25
+  wakeup_pin_mode: INVERT_WAKEUP
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: 25
+      mode: INPUT_PULLDOWN
+      inverted: True
+    name: "reed sensor"
+    device_class: door
+
+wifi:
+  ssid: "STEKEL MARWAH"
+  password: "rrqjuara"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "door_sensor Hotspot"
+    password: "12345678"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:

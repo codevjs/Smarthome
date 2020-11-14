@@ -1,0 +1,40 @@
+esphome:
+  name: reservoir_sensor
+  platform: ESP32
+  board: esp32doit-devkit-v1
+
+deep_sleep:
+  run_duration: 10s
+  sleep_duration: 10min
+  wakeup_pin: GPIO25
+
+sensor:
+  - platform: ultrasonic
+    trigger_pin:
+        number: GPIO25
+        mode: INPUT_PULLUP
+        inverted: True
+    echo_pin: GPIO26
+    name: "Sensor reservoir"
+    update_interval : "30s"
+    filters :
+      - lambda : return (1 - x) * 100;
+    unit_of_measurement: "%"
+
+wifi:
+  ssid: "STEKEL MARWAH"
+  password: "rrqjuara"
+
+  ap:
+    ssid: "Ultrasonic Fallback Hotspot"
+    password: "2oGBh8BUl7Gq"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
