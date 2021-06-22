@@ -1,0 +1,126 @@
+esphome:
+  name: smart_fan
+  platform: ESP8266
+  board: d1_mini
+  on_boot:
+    - switch.turn_on: switch_1
+    - switch.turn_on: switch_2
+    
+switch:
+  - platform: gpio
+    name: "Switch Speed 1"
+    id: switch_1
+    pin: D1
+    internal: true
+  - platform: gpio
+    name: "Switch Speed 2"
+    id: switch_2
+    pin: D2
+    internal: true
+  - platform: template
+    name: "Button Speed 1"
+    id: button_speed_1
+    lambda: |-
+      if (id(switch_1).state) {
+        return false;
+      } else {
+        return true;
+      }
+    turn_on_action:
+      then:
+        - lambda: |-
+           id(switch_2).turn_on();
+        - lambda: >-
+             id(switch_2).publish_state(true);
+        - delay: 500ms
+        - lambda: |-
+            id(switch_1).turn_off();
+        - lambda: >-
+            id(switch_1).publish_state(false);
+  - platform: template
+    name: "Button Speed 2"
+    id: button_speed_2
+    lambda: |-
+      if (id(switch_2).state) {
+        return false;
+      } else {
+        return true;
+      }
+    turn_on_action:
+      then:
+        - lambda: |-
+            id(switch_1).turn_on();
+        - lambda: >-
+            id(switch_1).publish_state(true);
+        - delay: 500ms
+        - lambda: |-
+            id(switch_2).turn_off();
+        - lambda: >-
+            id(switch_2).publish_state(false);
+  - platform: template
+    name: "Button Off"
+    id: button_off
+    turn_on_action:
+      then:
+        - lambda: |-
+            id(switch_2).turn_on();
+        - lambda: >-
+            id(switch_2).publish_state(true);
+        - lambda: |-
+            id(switch_1).turn_on();
+        - lambda: >-
+            id(switch_1).publish_state(true);
+  - platform: template
+    name: "Fan Status"
+    id: fan_status
+    lambda: |-
+      if (id(switch_1).state && id(switch_2).state) {
+        return false;
+      } else {
+        return true;
+      }
+
+binary_sensor:
+  - platform: gpio
+    name: button
+    pin:
+      number: D3
+      inverted: True
+      mode: INPUT_PULLUP
+    on_press:
+      then:
+        - switch.turn_on: button_speed_1
+    on_release:
+      then:
+        - switch.turn_on: button_off
+  - platform: gpio
+    name: button
+    pin:
+      number: D4
+      inverted: True
+      mode: INPUT_PULLUP
+    on_press:
+      then:
+        - switch.turn_on: button_speed_2
+    on_release:
+      then:
+        - switch.turn_on: button_off
+
+wifi:
+  ssid: "SMARTSM"
+  password: "Hadescyber2010"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Smart Fan Fallback"
+    password: "8GmHxKAyHVHE"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:

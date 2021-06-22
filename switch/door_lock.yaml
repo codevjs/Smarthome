@@ -1,0 +1,57 @@
+# Author by airijia.com
+# Sonoff SV Momentary Switch
+substitutions:
+  # Modify variables based on your settings
+  hostname: 'door_lock'
+  ssid: 'SMARTSM'
+  password: 'Hadescyber2010'
+  # relay delay
+  delay: 5000ms
+  name: "Door Lock"
+  icon: "mdi:door"
+
+esphome:
+  name: $hostname
+  platform: ESP8266
+  board: esp01_1m
+  board_flash_mode: dout
+
+wifi:
+  ssid: $ssid
+  password: $password
+  fast_connect: True
+api:
+  reboot_timeout: 0s
+ota:
+logger:
+
+status_led:
+  pin:
+    number: 13
+    inverted: True
+
+switch:
+  - platform: gpio
+    pin: 12
+    id: relay_1
+    name: $name
+    icon: $icon
+    on_turn_on:
+      then:
+        # turn off after $delay
+        - delay: $delay
+        - switch.turn_off: relay_1
+        # publish off state to the frontend (hass)
+        - lambda: >-
+            id(relay_1).publish_state(false);
+
+binary_sensor:
+  - platform: gpio
+    id: button_0
+    pin:
+      number: 0
+      inverted: True
+      mode: INPUT_PULLUP
+    on_click:
+      then:
+        - switch.turn_on: relay_1

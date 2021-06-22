@@ -1,0 +1,29 @@
+esphome:
+  name: pir_sensor_battery
+  platform: ESP8266
+  board: d1_mini
+
+binary_sensor:
+  - platform: gpio
+    name: "PIR Sensor Battery"
+    device_class: motion
+    pin: D4
+
+wifi:
+  ssid: "SMARTSM"
+  password: "Hadescyber2010"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Pir Sensor Battery"
+    password: "8GmHxKAyHVHE"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:

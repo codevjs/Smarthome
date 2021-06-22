@@ -1,0 +1,42 @@
+esphome:
+  name: pir_sensor
+  platform: ESP8266
+  board: nodemcu
+
+binary_sensor:
+  - platform: gpio
+    name: "PIR Sensor"
+    device_class: motion
+    pin:
+        number: D7
+        mode: INPUT_PULLUP
+
+sensor:
+  - platform: dht
+    pin: D2
+    temperature:
+      name: "Aldi's Bedroom Temperature"
+    humidity:
+      name: "Aldi's Bedroom Humidity"
+    update_interval: 60s
+
+wifi:
+  ssid: "SMARTSM"
+  password: "Hadescyber2010"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Pir Sensor Fallback Hotspot"
+    password: "pirsensor123"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "pirsensor123"
+
+ota:
+  password: "pirsensor123"

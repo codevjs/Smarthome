@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98f20158-7074-4a6e-a561-7565e1a6dfe5" name="Default Changelist" comment="" />
+    <list default="true" id="98f20158-7074-4a6e-a561-7565e1a6dfe5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/camera/esp32_camera.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smart_fan/smart_fan.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/switch/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1iuS0yN2vP9x6NV6GVxbN7Bb7cQ" />
   <component name="ProjectViewState">
@@ -14,14 +30,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/smart_fan" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/smart_fan" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/door_sensor" />
+      <recent name="$PROJECT_DIR$/reservoir_sensor" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -40,17 +65,41 @@
       <workItem from="1604037024988" duration="1492000" />
       <workItem from="1604113610289" duration="7517000" />
       <workItem from="1604138686508" duration="8000" />
-      <workItem from="1605330243309" duration="353000" />
+      <workItem from="1605330243309" duration="564000" />
+      <workItem from="1619553786802" duration="1432000" />
+      <workItem from="1619577154264" duration="63000" />
+      <workItem from="1619624106834" duration="32000" />
+      <workItem from="1619629135850" duration="1785000" />
+      <workItem from="1619664587347" duration="2544000" />
+      <workItem from="1619675939874" duration="3026000" />
+      <workItem from="1619758813939" duration="30000" />
+      <workItem from="1619798539922" duration="541000" />
+      <workItem from="1622435803716" duration="1931000" />
+      <workItem from="1622628228176" duration="24000" />
+      <workItem from="1623937822430" duration="3232000" />
+      <workItem from="1623951306014" duration="218000" />
+      <workItem from="1623980537939" duration="4626000" />
+      <workItem from="1624094454142" duration="637000" />
+      <workItem from="1624116361073" duration="9590000" />
+      <workItem from="1624169637819" duration="1826000" />
+      <workItem from="1624246179662" duration="377000" />
+      <workItem from="1624246713443" duration="4000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1604115526187">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1604115526187" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

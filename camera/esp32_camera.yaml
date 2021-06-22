@@ -1,0 +1,72 @@
+# Author by airijia.com
+# ESP32-CAM
+# Lovelace camera card https://github.com/custom-cards/camera-card
+# Video tutorial https://youtu.be/-towjof_ixU
+substitutions:
+  # Modify variables based on your settings
+  hostname: 'esp32_camera'
+  ssid: 'SMARTSM'
+  password: 'Hadescyber2010'
+
+esphome:
+  name: $hostname
+  platform: ESP32
+  board: esp32dev
+  on_boot:
+    light.turn_off: flash
+
+wifi:
+  ssid: $ssid
+  password: $password
+  fast_connect: True
+
+api:
+  reboot_timeout: 0s
+
+ota:
+
+logger:
+
+# ESP32-CAM
+esp32_camera:
+  id: bedroom_camera
+  external_clock:
+    pin: GPIO0
+    frequency: 20MHz
+  i2c_pins:
+    sda: GPIO26
+    scl: GPIO27
+  data_pins: [GPIO5, GPIO18, GPIO19, GPIO21, GPIO36, GPIO39, GPIO34, GPIO35]
+  vsync_pin: GPIO25
+  href_pin: GPIO23
+  pixel_clock_pin: GPIO22
+  power_down_pin: GPIO32
+  name: bedroom_camera
+  max_framerate: 10 fps
+  jpeg_quality: 10
+  resolution: 240x176
+
+# Flashlight
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: gpio_4
+
+light:
+  - platform: binary
+    id: flash
+    output: gpio_4
+    name: $hostname light
+
+binary_sensor:
+  - platform: gpio
+    name: button
+    pin:
+      number: GPIO16
+      inverted: True
+      mode: INPUT_PULLUP
+    on_press:
+      then:
+        - light.turn_on: flash
+        - delay: 1s
+        - light.turn_off: flash
